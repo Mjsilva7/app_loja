@@ -8,6 +8,8 @@ import 'package:app_loja/widgets/ship_card.dart';
 import 'package:flutter/material.dart';
 import 'package:scoped_model/scoped_model.dart';
 
+import 'order_screen.dart';
+
 class CartScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -92,7 +94,15 @@ class CartScreen extends StatelessWidget {
                 ),
                 DiscountCart(),
                 ShipCard(),
-                CartPrice(() {}),
+                CartPrice(() async {
+                  String orderId = await model.finishOrder();
+                  if (orderId != null)
+                    Navigator.of(context).pushReplacement(
+                      MaterialPageRoute(
+                        builder: (context) => OrderScreen(orderId),
+                      ),
+                    );
+                }),
               ],
             );
           }

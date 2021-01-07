@@ -1,4 +1,6 @@
 import 'package:app_loja/tabs/home_tab.dart';
+import 'package:app_loja/tabs/orders_tab.dart';
+import 'package:app_loja/tabs/places_tab.dart';
 import 'package:app_loja/tabs/products_tab.dart';
 import 'package:app_loja/widgets/cart_button.dart';
 import 'package:app_loja/widgets/custom_drawer.dart';
@@ -26,6 +28,22 @@ class HomeScreen extends StatelessWidget {
           drawer: CustomDrawer(_pageController),
           body: ProductsTab(),
           floatingActionButton: CartButton(),
+        ),
+        Scaffold(
+          appBar: AppBar(
+            title: Text("Lojas"),
+            centerTitle: true,
+          ),
+          body: PlacesTab(),
+          drawer: CustomDrawer(_pageController),
+        ),
+        Scaffold(
+          appBar: AppBar(
+            title: Text("Meus Pedidos"),
+            centerTitle: true,
+          ),
+          body: OrdersTab(),
+          drawer: CustomDrawer(_pageController),
         ),
       ],
     );
